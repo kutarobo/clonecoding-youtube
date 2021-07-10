@@ -110,7 +110,6 @@ function LoginPage(props) {
                   id="password"
                   prefix={
                     <LockOutlined
-                      type="lock"
                       style={{ color: "rgba(0,0,0,.25)" }}
                     />
                   }
