@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Typography, Button, Form, message, Input } from "antd";
 import Dropzone from "react-dropzone";
 import { PlusOutlined } from "@ant-design/icons";
+import Axios from "axios";
 
 const { TextArea } = Input;
 const { Title } = Typography;
@@ -39,6 +40,22 @@ function VideoUploadPage() {
   const onCategoryChange = (e) => {
     setCategory(e.currentTarget.value);
   };
+
+  const onDrop = (files) => {
+    let formData = new FormData();
+    const config = {
+      header: { "content-type": "multupart/form-data" },
+    };
+    formData.append("file", files[0]);
+    Axios.post("/api/video/uploadfiles", formData, config).then((response) => {
+      if (response.data.success) {
+        console.log(response.data);
+        return;
+      }
+      alert("비디오 업로드를 실패했습니다");
+    });
+  };
+
   return (
     <div style={{ maxWidth: "700px", margin: "2rem auto" }}>
       <div style={{ textAlign: "center", marginBottom: "2rem" }}>
@@ -47,7 +64,7 @@ function VideoUploadPage() {
 
       <Form onSubmit>
         <div style={{ display: "flex", justifyContent: "space-between" }}>
-          <Dropzone onDrop multiple maxSize>
+          <Dropzone onDrop={onDrop} multiple={false} maxSize={9999999}>
             {({ getRootProps, getInputProps }) => (
               <div
                 style={{
@@ -67,16 +84,16 @@ function VideoUploadPage() {
           </Dropzone>
           {/* Thumb */}
           <div>
-            <img src alt />
+            <img src="" alt="" />
           </div>
         </div>
         <br />
         <br />
-        <labe>Title</labe>
+        <label>Title</label>
         <Input onChange={onTitleChange} value={VideoTitle} />
         <br />
         <br />
-        <labe>Description</labe>
+        <label>Description</label>
         <TextArea onChange={onDescriptionChange} value={Description} />
         <br />
         <br />
