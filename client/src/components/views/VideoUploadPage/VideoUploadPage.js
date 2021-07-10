@@ -52,7 +52,7 @@ function VideoUploadPage() {
         console.log(response.data);
         return;
       }
-      alert("비디오 업로드를 실패했습니다");
+      alert(`${response.data.err}\n비디오 업로드를 실패했습니다`);
     });
   };
 
