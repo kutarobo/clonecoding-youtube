@@ -2,8 +2,10 @@
 
 2. class component vs functional component
 
-   - class component 가 좀 더 느리지만 기능이 많았다.
+   - class component 가 좀 더 느리지만 지원하는 기능이 많았다.
    - react hook이 나온 이후 functional component가 지원하는 기능이 많이 따라와서 퍼포먼스가 나은 functional 이 대세가 되고있다
+   - functional component 에서 state는 useState를 사용하여 다룬다.
+     `[state, setState]
 
 3. 드랍존 패키지 라이브러리 `npm install react-dropzone --save`
 
