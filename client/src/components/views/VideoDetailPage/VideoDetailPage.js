@@ -31,7 +31,12 @@ function VideoDetailPage(props) {
               controls
             />
             <List.Item
-              actions={[<Subscribe userTo={VideoDetail.writer._id} />]}
+              actions={[
+                <Subscribe
+                  userTo={VideoDetail.writer._id}
+                  userFrom={localStorage.getItem.userId} // 로그인한 사람의 아이디
+                />,
+              ]}
             >
               <List.Item.Meta
                 avatar={<Avatar src={VideoDetail.writer.image} />}

@@ -18,7 +18,7 @@ function Subscribe(props) {
       userTo: props.userTo,
       userFrom: localStorage.getItem("userId"),
     };
-    Axios.post("/api/sbscribe/subscribed", subscribedVariable).then(
+    Axios.post("/api/subscribe/subscribed", subscribedVariable).then(
       (response) => {
         if (!response.data.success) {
           alert("정보를 받아오지 못했습니다.");
@@ -28,6 +28,36 @@ function Subscribe(props) {
       }
     );
   }, []);
+
+  const onSubscribe = () => {
+    let subscribeVariable = {
+      userTo: props.userTo,
+      userFrom: props.userFrom,
+    };
+
+    let condition = {
+      apiMethod: "subscribe",
+      errorText: "구독 시도에 실패했습니다.",
+    };
+
+    if (Subscribed) {
+      condition.apiMethod = "unSubscribe";
+      condition.errorText = "구독 취소에 실패했습니다.";
+    }
+
+    Axios.post(`/api/subscribe/${condition.apiMethod}`, subscribeVariable).then(
+      (response) => {
+        if (!response.data.success) {
+          alert(condition.errorText);
+          return;
+        }
+        setSubscribeNumber((prevNumber) =>
+          Subscribed ? prevNumber - 1 : prevNumber + 1
+        );
+        setSubscribed(!Subscribe);
+      }
+    );
+  };
 
   return (
     <div>
@@ -41,7 +71,7 @@ function Subscribe(props) {
           fontSize: "1rem",
           textTransForm: "uppercase",
         }}
-        onClick
+        onClick={onSubscribe}
       >
         {SubscribeNumber} {Subscribed ? "Subscribed" : "Subscribe"}
       </button>
