@@ -34,6 +34,7 @@ function SingleComment(props) {
       }
       console.log(response.data.result);
       setCommentValue("");
+      setOpenReply(false);
       props.refreshFunction(response.data.result);
     });
   };
@@ -43,12 +44,13 @@ function SingleComment(props) {
       Reply to
     </span>,
   ];
+
   return (
     <div>
       <Comment
         actions={actions}
         author={props.comment.writer.name}
-        avatar={<Avatar src={props.comment.writer.image} alt />}
+        avatar={<Avatar src={props.comment.writer.image} />}
         content={<p> {props.comment.content}</p>}
       />
 

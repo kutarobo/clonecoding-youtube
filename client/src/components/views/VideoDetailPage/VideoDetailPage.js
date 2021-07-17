@@ -28,7 +28,6 @@ function VideoDetailPage(props) {
         return;
       }
       setComments(response.data.comments);
-      console.log(response.data);
     });
   }, []);
 
