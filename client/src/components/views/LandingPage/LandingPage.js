@@ -16,7 +16,6 @@ function LandingPage() {
         alert("비디오 가져오기를 실패 했습니다");
         return;
       }
-      console.log(response.data);
       setVideos(response.data.videos);
     });
   }, []);
