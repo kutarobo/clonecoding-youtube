@@ -1,4 +1,5 @@
 1. todo
+
    - comment 기능 변경.
    - 무한 뎁스가 아닌 2depth 까지만.
      - parent id 규칙
@@ -14,5 +15,8 @@
            - more 버튼 X
    - query
      - parent 가 없는 comment 만 pagination
-     - parent id 로 comment 가져오기.
-       -
+     - ## parent id 로 comment 가져오기.
+
+2. react-redux
+
+   - useSelector
