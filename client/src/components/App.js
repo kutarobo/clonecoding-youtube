@@ -9,6 +9,7 @@ import NavBar from "./views/NavBar/NavBar";
 import Footer from "./views/Footer/Footer";
 import VideoUploadPage from "./views/VideoUploadPage/VideoUploadPage";
 import VideoDetailPage from "./views/VideoDetailPage/VideoDetailPage";
+import VideoDetailPage2 from "./views/VideoDetailPage/VideoDetailPage2";
 import SubscriptionPage from "./views/SubscriptionPage/SubscriptionPage";
 
 //null   Anyone Can go inside
@@ -33,6 +34,11 @@ function App() {
             exact
             path="/video/:videoId"
             component={Auth(VideoDetailPage, null)}
+          />
+          <Route
+            exact
+            path="/video2/:videoId"
+            component={Auth(VideoDetailPage2, null)}
           />
           <Route
             exact
